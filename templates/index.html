@@ -4,15 +4,22 @@
 <h1 class="mt-5">To-Do List</h1>
 <form method="POST" action="/add">
     <div class="form-group">
-        <input type="text" class="form-control" name="content" placeholder="Enter a new task">
+        <input type="text" class="form-control" name="content" placeholder="Añade tu nueva tarea">
     </div>
-    <button type="submit" class="btn btn-primary">Add Task</button>
+    <button type="submit" class="btn btn-primary">Agregar tarea</button>
 </form>
 <ul class="list-group mt-4">
     {% for task in tasks %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
+    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
         {{ task.content }}
         <a href="/delete/{{ task.id }}" class="btn btn-danger btn-sm">Delete</a>
+    </li> -->
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="task-content">{{ task.content }}</span>
+        <div>
+            <button class="btn btn-success btn-sm complete-task">Complete</button>
+            <a href="/delete/{{ task.id }}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
     </li>
     {% endfor %}
 </ul>
